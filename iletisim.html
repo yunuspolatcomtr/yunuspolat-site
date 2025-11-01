@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>İletişim | Yunus Polat</title>
+  <meta name="description" content="Sorunuzu paylaşın, aynı gün geri dönüş yapayım. Telefon, e-posta ve WhatsApp.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar navbar-expand-lg nav-blur">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">Yunus&nbsp;Polat</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
+          <li class="nav-item"><a class="nav-link" href="kimdir.html">Kimdir?</a></li>
+          <li class="nav-item"><a class="nav-link" href="danismanlik.html">Danışmanlık</a></li>
+          <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
+          <li class="nav-item ms-lg-3"><a class="btn btn-brand btn-sm" href="mailto:merhaba@yunuspolat.com.tr">E-posta</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="container text-center py-5 page-hero fadein">
+    <span class="kicker">Hızlı İletişim</span>
+    <h1 class="fw-bold mb-3 mt-2">Sorunuzu bırakın, aynı gün döneyim.</h1>
+  </header>
+
+  <main class="container py-5 fadein">
+    <div class="row g-5 justify-content-center">
+      <div class="col-lg-5">
+        <h2 class="h6 fw-semibold mb-3">Bağlantı Bilgileri</h2>
+        <ul class="list-unstyled text-muted contact-links">
+          <li class="mb-2"><i class="bi bi-telephone me-2 text-brand"></i><a href="tel:+905445660532">0544 566 05 32</a></li>
+          <li class="mb-2"><i class="bi bi-envelope me-2 text-brand"></i><a href="mailto:merhaba@yunuspolat.com.tr">merhaba@yunuspolat.com.tr</a></li>
+          <li class="mb-2"><i class="bi bi-whatsapp me-2 text-brand"></i><a href="https://wa.me/905445660532" target="_blank">WhatsApp ile mesaj</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-6">
+        <h2 class="h6 fw-semibold mb-3">Kısa Mesaj</h2>
+        <form onsubmit="return sendMail()" class="contact-form">
+          <input type="text" id="name" class="form-control mb-3" placeholder="Ad Soyad" required>
+          <input type="email" id="email" class="form-control mb-3" placeholder="E-posta adresiniz" required>
+          <textarea id="message" rows="4" class="form-control mb-3" placeholder="Mesajınız" required></textarea>
+          <button type="submit" class="btn btn-brand">E-posta Uygulamasıyla Gönder</button>
+        </form>
+      </div>
+    </div>
+  </main>
+<!-- FOOTER -->
+  <footer class="footer py-5 fadein text-center">
+    <div class="container">
+      <h3 class="fw-bold h6 mb-2">Yunus Polat</h3>
+      <p class="text-muted mb-3">Dijital sistem ve strateji danışmanlığı</p>
+      <div class="d-flex justify-content-center gap-3 fs-5 mb-3">
+        <a href="https://instagram.com/yunuspolatcomtr" target="_blank" rel="noopener"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/yunuspolat-tr?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener"><i class="bi bi-linkedin"></i></a>
+        <a href="mailto:merhaba@yunuspolat.com.tr"><i class="bi bi-envelope"></i></a>
+      </div>
+      <div class="small text-muted">© <span id="year"></span> Yunus Polat. Tüm hakları saklıdır.</div>
+    </div>
+  </footer>
+  <a href="https://wa.me/905445660532" class="wa-fab" target="_blank"><i class="bi bi-whatsapp"></i></a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="scripts.js"></script>
+
+  <script>
+    function sendMail(){
+      const name=document.getElementById("name").value.trim();
+      const email=document.getElementById("email").value.trim();
+      const message=document.getElementById("message").value.trim();
+      const subject=encodeURIComponent("Web Sitesi İletişim: " + name);
+      const body=encodeURIComponent(`Ad Soyad: ${name}\nE-posta: ${email}\n\nMesaj:\n${message}`);
+      window.location.href=`mailto:merhaba@yunuspolat.com.tr?subject=${subject}&body=${body}`;
+      return false;
+    }
+  </script>
+</body>
+</html>
