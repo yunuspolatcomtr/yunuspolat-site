@@ -39,7 +39,7 @@ body{margin:0;font-family:"Inter",system-ui;background:var(--bg);color:var(--fg)
 }
 .wa-fab:hover{transform:scale(1.08)}
 
-.page-hero{padding-top:120px}
+.page-hero{padding-top:63px!important}
 .about-portrait{width:340px;max-width:100%;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.12);transition:.3s}
 .about-portrait:hover{transform:scale(1.02)}
 
@@ -293,4 +293,54 @@ box-shadow:0 0 0 3px rgba(168,213,186,.3)}
   border: 1px solid #e0e5e1;
   background: #f9f9f9;
   box-shadow: 0 8px 20px rgba(15,23,42,.06);
+}
+.fadein {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+.fadein.visible {
+  opacity: 1;
+  transform: none;
+}
+/* Global header yüksekliği — tek yerden yönet */
+:root { --header-h: 72px; }
+@media (max-width: 768px){ :root { --header-h: 64px; } }
+
+/* Header: yüksekliği değişmeyen, sabit bağlam */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: var(--header-h);
+  display: flex; align-items: center;
+  background: rgba(255,255,255,.60);
+  backdrop-filter: saturate(140%) blur(8px);
+  transition: background .2s, box-shadow .2s, border-color .2s;
+}
+
+/* Scroll efektleri: sadece görsel değişsin, yükseklik asla değişmesin */
+.is-scrolled .site-header{
+  background: rgba(255,255,255,.92);
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+
+/* İçerik her sayfada header’ın altından başlasın */
+main{ padding-top: var(--header-h); }
+
+/* Anchor’a kayarken header çarpması olmasın */
+*:target{ scroll-margin-top: calc(var(--header-h) + 12px); }
+
+/* Sticky’yi bozan transform/overflow’ları etkisizleştir (özellikle kimdir/iletişim) */
+body, html { overflow-x: clip; }
+body, html, .page, .container, .wrapper { transform: none !important; }
+
+/* Fade-in’ler header’a veya header atasına asla uygulanmasın */
+.site-header, .site-header * { will-change: auto; }
+
+/* 100vh kaynaklı zıplamayı durdur: küçük viewport birimleri */
+.hero, .first-section, .page-hero{
+
+  height: auto;         /* 100vh yerine */
 }

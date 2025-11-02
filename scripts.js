@@ -171,3 +171,21 @@ fadeEls.forEach(el=>obs.observe(el));
 
   update(); play();
 })();
+document.addEventListener('DOMContentLoaded', () => {
+  const els = document.querySelectorAll('.fadein');
+  els.forEach(el => el.classList.add('visible'));
+});
+document.addEventListener('DOMContentLoaded', () => {
+  const root = document.documentElement;
+
+  const onScroll = () => {
+    if (window.scrollY > 8) {
+      root.classList.add('is-scrolled');
+    } else {
+      root.classList.remove('is-scrolled');
+    }
+  };
+
+  onScroll(); // sayfa yenilendiğinde durum doğru başlasın
+  window.addEventListener('scroll', onScroll, { passive: true });
+});
