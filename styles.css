@@ -39,7 +39,17 @@ body{margin:0;font-family:"Inter",system-ui;background:var(--bg);color:var(--fg)
 }
 .wa-fab:hover{transform:scale(1.08)}
 
-.page-hero{padding-top:63px!important}
+.page-hero {
+  padding-top: 120px !important; /* desktop için */
+}
+
+/* Mobil görünüm için (768px ve altı ekranlar) */
+@media (max-width: 768px) {
+  .page-hero {
+    padding-top: 63px !important;
+  }
+}
+
 .about-portrait{width:340px;max-width:100%;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.12);transition:.3s}
 .about-portrait:hover{transform:scale(1.02)}
 
